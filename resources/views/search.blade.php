@@ -16,9 +16,16 @@
                             <tbody class="bg-white divide-y divide-gray-200 divide-solid">
                             @if(count($results) > 0)
                                 @foreach($results as $result)
-                                    <x-dynamic-component
-                                        :component="Str::lower(class_basename($result))"
-                                        :data="$result" />
+                                    <tr class="bg-white">
+                                        <td {{ class_basename($result) == "Company" ? 'colspan=2' : '' }} class="px-6 py-4 text-sm leading-5 text-gray-900 whitespace-no-wrap">
+                                            <span class="font-semibold">{{ class_basename($result) == "User" ? 'User' : 'Company' }} name:</span> {{ $result->name }}
+                                        </td>
+                                        @if(class_basename($result) == "User")
+                                            <td class="px-6 py-4 text-sm leading-5 text-gray-900 whitespace-no-wrap">
+                                                <span class="font-semibold">User email:</span> {{ $result->email }}
+                                            </td>
+                                        @endif
+                                    </tr>
                                 @endforeach
                             @else
                                 <tr>
