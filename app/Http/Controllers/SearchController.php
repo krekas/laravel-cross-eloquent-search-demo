@@ -11,16 +11,14 @@ class SearchController
 {
     public function index(Request $request)
     {
-        $users = Search::add(User::class, 'name')
+        $results = Search::addMany([
+                [User::class, 'name'],
+                [Company::class, 'name']
+            ])
             ->beginWithWildcard()
             ->paginate()
             ->get($request->get('term'));
 
-        $companies = Search::add(Company::class, 'name')
-            ->beginWithWildcard()
-            ->paginate()
-            ->get($request->get('term'));
-
-        return view('search', compact('users', 'companies'));
+        return view('search', compact('results'));
     }
 }
