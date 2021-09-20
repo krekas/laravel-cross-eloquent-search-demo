@@ -9,36 +9,8 @@ class CompaniesController extends Controller
 {
     public function index()
     {
-        //
-    }
+        $companies = Company::paginate();
 
-    public function create()
-    {
-        //
-    }
-
-    public function store(Request $request)
-    {
-        //
-    }
-
-    public function show(Company $company)
-    {
-        //
-    }
-
-    public function edit(Company $company)
-    {
-        //
-    }
-
-    public function update(Request $request, Company $company)
-    {
-        //
-    }
-
-    public function destroy(Company $company)
-    {
-        //
+        return view('companies.index', compact('companies'));
     }
 }

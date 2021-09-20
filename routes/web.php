@@ -20,6 +20,7 @@ Route::get('/', function () {
 Route::get('search', [\App\Http\Controllers\SearchController::class, 'index'])->name('search');
 
 Route::get('users', [\App\Http\Controllers\UserController::class, 'index'])->name('users.index');
+Route::get('companies', [\App\Http\Controllers\CompaniesController::class, 'index'])->name('companies.index');
 
 Route::middleware('auth')->group(function () {
     Route::get('profile', [\App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');
